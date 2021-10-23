@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Blog-ul lui Sabin</title>
+    <meta name="description" content="Blog în care scriu despre ce vreau">
+    <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACk0lEQVRYhcXX/0sTcRgH8I/+Zd68u83ubnNZQ8V0bLbSHC1tY3NuSaPse2YhQYjZF3EuhyBiRaWiGIq/mGWERGo2CZLNdDL35d79UDu0HOi63R54fvtwz+vueZ6DDyGEFFIM56FYfo1ieFHFCshlUgwvUiy/VkTzLYSQAkIxnCfXRTNjuGZCMcL3fAFUjPCN5K34n3ZkDTBUGnHuvAsudytsTU5UVJmzes6hAMVqLW7cuoul5RXsFxsbPzE6NoEmh1t+AK3RYWx8ct/Cf8fqakh+wIOuHqnAzk4cwcEhOFxeWOrOwtbkxO2OTkzPzCKVSqGr+7G8AFqjQzgSAQAkEglYbfaMZ6tqTqLMcEJeQO0pq/T2U2+nsxq2/wLYnR4JMDT8XHmA1WaXAO8/LCgP4LTHEYvFAACiKOLSlZvKAlSsgL7+AekrpFIp+ANBaPXlygHUnB7TM7N79n1rKwp/fxAVVabcA1Ts73Xs7nkqtSMdyWQSr16PwWiuyy0gncfKq9HbF0A4HPkH8vBRL4rV2twCdrfl6vV2rHxd3QMJDAwqA0gne0QPfyAIURSlTam3NioHSOfwyMtdP6wR5QE1ptMSYOHjJ+UBJUKZBPiytKw8wGQ5IwHm3s3LB1BzevguXwNTUprxDK3RYWJySgI86fXLB7hwsQ0A8GN9Hc+Cg2j1taHe2giTpQFWmx3tHZ1YXPwsFY9GozBUGOUDvBkdx0Fje3sbDpf3wG07EIAvNeDOvfuYm5tHPJ7Yt/Dm5haGR16gsrr2UHNz6CFUc0dhtjTA4fLC7fXB7vTAaK4DrdFlNbhEiftgpqQYXiQUy6/lDcAKIaKi+ZZ8AYpozk0IIYVFNN9CsUJIueu5EKIYrpkQUvALb81C8td24CkAAAAASUVORK5CYII=">
+    <!-- og tags -->
+    <meta property="og:title" content="Blog-ul lui Sabin">
+    <meta property="og:description" content="Blog în care scriu despre ce vreau">
+    <!-- other -->
+    <meta name="twitter:card" content="summary">
+    <script src="/dependencies/microlight.js"></script>
+    <style>
+        * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  --text-color: #111;
+  --text-color-light: #7a7a7a;
+  --text-color-pale: #ddddda;
+  --back-color: #fff;
+  --link-color: #d83c00;
+}
+
+@media only screen and (prefers-color-scheme: dark) {
+  * {
+    --text-color: #eeeeea;
+    --text-color-light: #acacaa;
+    --text-color-pale: #000;
+    --back-color: #1c1c1c; /*#1c1c1a*/
+    --link-color: #ffe178/*#ffe178*/; /*gold*/
+  }
+}
+
+body {
+  position: relative;
+  font: 18.5px / 1.5 system-ui, "Segoe UI", sans-serif;
+  color: var(--text-color);
+  background: var(--back-color);
+  max-width: 42em; /* column width */
+  margin:0 auto;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+html, body {
+  height = 100%;
+}
+
+/* Show & hide sections */
+
+section, section:target ~ section:last-of-type {
+  height: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
+section:target, section:last-of-type {
+  height: auto;
+  overflow: visible;
+  padding: calc(4vw + 3.4em) 4vw 2.1em;
+}
+
+/* tabindex="0" */
+
+section:focus {
+  outline: 0;
+}
+
+/* Vertical spacing */
+
+section * + * {
+  margin-top: .9em;
+}
+
+/* Header */
+
+header {
+  padding: 4vw 4vw 0;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+
+/* Footer */
+
+footer {
+  padding: 1em 4vw 5vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  color: var(--text-color-light);
+}
+
+footer * + * {
+  margin-top: 0;
+}
+
+/* Table of contents */
+
+ul.toc {
+  overflow: hidden;
+}
+
+ul.toc * + * {
+  margin: 0;
+}
+
+ul.toc li {
+  color: var(--text-color-light);
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  margin: 0;
+}
+
+ul.toc li + li {
+  margin: .25em 0 0 0;
+}
+
+ul.toc li a {
+  color: var(--text-color);
+  flex: 1;
+}
+
+ul.toc li a span {
+  background: var(--back-color);
+  padding-inline-end: .3em;
+}
+
+ul.toc li time {
+  white-space:nowrap;
+  z-index: 1;
+  padding-inline-start:.3em;
+  background: var(--back-color);
+}
+
+ul.toc li a:after {
+  letter-spacing: 0em;
+  width: 100%;
+  font-size: 0.45em;
+  position: absolute;/* absolute */
+  bottom: .4em;
+  white-space: nowrap;
+  content:
+  '______________________'
+  '______________________'
+  '______________________'
+  '______________________'
+  '______________________';
+  /* ' _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _' */
+  /* ' . . . . . . . . . . . . . . . . . . . . . .' */
+}
+
+/* General */
+
+a {
+  color: var(--link-color);
+  text-decoration: none;
+  text-underline-offset: 1px;
+  overflow-wrap: break-word;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  a:hover {
+    text-decoration: underline;
+  }
+}
+
+a[href*="//"]:after, a[href^="mailto:"]:after {
+  display: inline-block;
+  font-size: .8em;
+  content: "\2197"; /* top right arrow: ↗ */
+}
+
+.copyleft {
+ position: absolute;
+ text-align: center;
+ bottom: 0;
+ width: 100%;
+ padding: 0.5em 0;
+}
+
+/* form */
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=search],
+input[type=number],
+input[type=file],
+input[type=tel],
+input[type=url],
+select,
+textarea {
+  height: 45px;
+  width: 100%;
+  margin-bottom: 16px;
+  padding: 16px;
+  font-size: 16px;
+  background: #f5f5f5;
+  border: 1px solid #a7a7a7;
+  border-radius: 2px;
+  transition: all 0.2s ease;
+}
+input[type=text]:hover,
+input[type=password]:hover,
+input[type=email]:hover,
+input[type=search]:hover,
+input[type=number]:hover,
+input[type=file]:hover,
+input[type=tel]:hover,
+input[type=url]:hover,
+select:hover,
+textarea:hover {
+  border-color: #111;
+}
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=email]:focus,
+input[type=search]:focus,
+input[type=number]:focus,
+input[type=file]:focus,
+input[type=tel]:focus,
+input[type=url]:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #0062ff;
+}
+textarea {
+  min-height: 70px;
+}
+
+/* button */
+
+button,
+.button,
+[type=submit] {
+  height: 45px;
+  margin-bottom: 16px;
+  padding: 10px 30px;
+  outline: none;
+  text-decoration: none;
+  color: #f5f5f5;
+  font-size: 16px;
+  background: #111;
+  border: 1px solid #111;
+  border-radius: 2px;
+  transition: all 0.2s ease;
+}
+button:hover,
+.button:hover,
+[type=submit]:hover,
+button:focus,
+.button:focus,
+[type=submit]:focus {
+  opacity: 0.9;
+}
+button:active,
+.button:active,
+[type=submit]:active {
+  opacity: 0.7;
+}
+button[disabled],
+.button[disabled],
+[type=submit][disabled] {
+  opacity: 0.8;
+  cursor: not-allowed;
+}
+button.outline,
+.button.outline,
+[type=submit].outline {
+  color: #111;
+  background: none;
+}
+button.outline:hover,
+.button.outline:hover,
+[type=submit].outline:hover,
+button.outline:focus,
+.button.outline:focus,
+[type=submit].outline:focus {
+  color: #f5f5f5;
+  background: #111;
+}
+
+/* Headings */
+
+header h1 a {
+  font-weight: normal;
+  display: block;
+}
+
+section h1 {
+  margin-bottom: 1em;
+  font-size: 1.6em;
+}
+
+h1, h2, h3, h4, strong, b, dt {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+* + h2, * + h3, * + h4 {
+  margin-top: 1.4em;
+}
+
+h3 {
+  /* text-transform: uppercase; */
+  letter-spacing: .05em;
+  font-size: 0.9em;
+}
+
+/* Lists */
+
+li, dd {
+  margin-inline-start: 1.25em;
+}
+
+li + li, li ol, li ul {
+  margin-top: .25em;
+}
+
+.footnotes li {
+  margin-top:.5em;
+  max-width:95%;
+}
+
+/* Images */
+
+img {
+  display: block;
+  max-width: 100%;
+  min-height:4em;
+  height: auto;
+  position: relative;
+  margin: 0 auto;
+  box-shadow: 0 .05em .4em var(--text-color-light);
+  background: rgba(0,0,0,.025);
+}
+
+img:after { /* style offline images */
+  content: attr(alt);
+  display: grid;
+  align-content:center;
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-size: .865em;
+  text-align: center;
+  border:1px dashed var(--text-color-light);
+  background-color: var(--back-color);
+}
+
+figure {
+  padding: 1.5em 1.2em;
+}
+
+figcaption {
+  color: var(--text-color-light);
+  text-align: center;
+}
+
+figcaption a {
+  color: var(--text-color);
+  text-decoration: underline;
+}
+
+figcaption, small, .footnotes {
+  font-size: .865em; /*865*/
+}
+
+/* Other elements */
+
+blockquote {
+  font-family: "Iowan Old Style", Constantia, Georgia, serif;
+  font-variant-numeric: oldstyle-nums;
+  padding: .4em 1.2em;
+}
+
+abbr[title] {
+  text-decoration: none;
+  cursor: help;
+}
+
+a abbr[title] {
+  cursor: pointer;
+  color: inherit;
+}
+
+hr {
+  border: 0;
+  height: 0;
+  border-bottom: 1px solid;
+  opacity: .1;
+  margin: 1.4em 0;
+}
+
+sup {
+  line-height: 1;
+  font-size: .75em;
+}
+
+code, kbd {
+  font-family: ui-monospace, SFMono-Regular, 'Cascadia Code', Menlo, monospace;
+  overflow-wrap: break-word;
+  font-size:.95em;
+  color: var(--text-color-light);
+}
+
+kbd {
+  box-shadow:0 .5px 1px;
+  border-radius:2px;
+  padding:.1em .325em .075em;
+  margin: 0 .1em;
+}
+
+pre {
+  overflow: auto;
+  padding: 0.65em .85em .6em;
+  background: rgb(23,24,15, 0.3)/*rgba(0,0,0,.025)*/;
+  border-radius: 4px;
+  margin: 1em 0;
+}
+
+pre code {
+  position: relative;
+  display:block;
+  overflow-wrap: normal;
+  white-space: pre;
+  background-color: var(--text-color-pale); /*#17180F rgb(23,24,15, 0.4)*/
+  color: var(--link-color); /* FFE178 */
+}
+
+pre code:after {
+  content: attr(class);
+  position: absolute;
+  right: 0em;
+  top: -1.3em;
+  text-transform: uppercase;
+  font-size: .7em;
+  color: var(--text-color-light);
+}
+
+/* Tables */
+
+table {
+  border-collapse: collapse;
+  font-size: .9em;
+  width: 100%;
+  margin: 1.4em 0;
+}
+
+thead th {
+  text-align: start;
+  border-bottom: 1px solid;
+}
+
+th, td {
+  padding: .4em .6em;
+  border: 1px dotted var(--text-color-pale);
+}
+
+/* Disable footnotes #links */
+
+sup a {
+  color: currentColor;
+  pointer-events: none;
+}
+
+a.footnote-backref {
+  display: none;
+}
+
+/* Smaller screens */
+
+@media only screen and (max-width: 750px) {
+  body {
+    font-size: 17px;
+  }
+  footer small {
+    font-size: 1em;
+  }
+  blockquote, figure {
+    padding:1em 0;
+  }
+  ul.toc li + li {
+    margin-top:.4em;
+  }
+  footer small:first-of-type {
+    left: -1000vw;
+    /* height: 0; */
+    overflow: hidden;
+    position: absolute;
+  }
+  footer small:last-of-type {
+    padding: 1em 0;
+  }
+}
+
+/* Print */
+
+@media print {
+  * {
+    --back-color: #fff;
+  }
+  header {
+    position: relative;
+  }
+  section {
+    height: auto;
+    overflow: visible;
+
+    page-break-after: always;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    display: block;
+    padding: 2em 4vw;
+  }
+  section * {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  footer {
+    display: none;
+  }
+}
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>
+            <a href="#acasa">Blog-ul lui Sabin</a>
+        </h1>
+    </header>
+    <main>
+        <div style="text-align: justify">
+            <!-- pentru postari -->
+            <section tabindex="0"> <!-- id="acasa" -->
+                <nav>
+                    <ul class="toc">
+                        <li><a href="#blog-urile-de-ce-cum-pentru-cine-2021-10-23"><span> Blog-urile: De ce? Cum? Pentru cine?
+</span></a> <time datetime="2021-10-23">sâmbătă, 23 octombrie 2021</time></li>                    </ul>
+                </nav>
+            </section>
+            <section tabindex="0" role="document" aria-label="Despre" id="despre"><h2>Despre mine (Sabin):</h2>
+<ul>
+<li>sunt cel mai <strong>Maxim</strong> dintre toți;</li>
+<li>codez și îmi place C/C++;</li>
+<li>codez și nu îmi place JavaScript;</li>
+<li>prefer să lucrez în HTML/CSS vanilla;</li>
+<li>mai nou n-am ce face și am făcut un blog;</li>
+</ul>
+<p>Am mai multe proiecte <a href="https://github.com/sabinM1">aici</a>!</p>
+<hr />
+<h2>Despre site:</h2>
+<ul>
+<li><strong>nu are tracker-e sau reclame</strong> (acest lucru nu se va schimba niciodată);</li>
+<li>funcționează și fără CSS, dar oricum am doar în jur de 500 de linii (formatate) de CSS pentru întreg blog-ul, deci dacă crezi că CSS-ul nu se merită, iți propun să <a href="https://browsehappy.com">accesezi acest site</a>;</li>
+<li>folosește o singură librărie JavaScript, „microlight”, ce este de 2.2KB ca dimensiune;</li>
+<li>este generat cu un script PHP;</li>
+<li>postările sunt scrise în Markdown (Parsedown Extra + Plugin);</li>
+<li><strong>este format doar dintr-o singură pagină HTML</strong>, fără script-uri excesive sau alt „bloatware”;</li>
+<li>fișierul HTML și cel CSS sunt compresare, originalele sunt puse în directorul <code>uncompressed</code> de pe GitHub;</li>
+<li>Drepturile de autor sunt de tip „Copyleft” sub licența GPL-3.0, deci <strong>poți să îmi copiezi tot site-ul cât timp respecți câteva reguli</strong>, <a href="https://github.com/sabinM1/blog">vezi codul sursă și mai multe informații aici</a>;</li>
+</ul>
+<hr />
+<h2>Contact:</h2>
+<ul>
+<li>Prin email: sa<a href="https"></a>bin<svg width="16" height="16"><image xlink:href="../../img/la.svg" src="../../img/la.png" width="16" height="16"/></svg>disroot<a href="https"></a>.<a href="https"></a>org <!-- pentru a nu primi spam --></li>
+<li>Cu următorul formular:</li>
+</ul> <form method="POST" action="https://www.formrocket.me/api/forms/46656298/blog/51662581323500320/post/showSuccessMessageOnDone?message="Mulțumesc pentru interesul tău și pentru completarea formularului! Poți închide această pagină de confirmare.""><p><input type="text" name="nume" placeholder="Nume" aria-required="true" required></p><p><input type="email" name="email" placeholder="Email" aria-required="true" required></p> <p><textarea name="mesaj" rows="4" placeholder="Propunerea/Întrebarea/Comentariul tău aici" aria-required="true" required></textarea></p><p><input type="submit" value="Trimite"></p></form></section>            <section tabindex="0" role="document" aria-label=" Blog-urile: De ce? Cum? Pentru cine?
+" id="blog-urile-de-ce-cum-pentru-cine-2021-10-23"><h1>Blog-urile: De ce? Cum? Pentru cine?</h1>
+<h6><small>Cuvintele subliniate au explicații, țineți mouse-ul pe cuvânt pentru a vedea acestea.</small></h6>
+<h2>Introducere. De ce ai face un blog?</h2>
+<p>Încă din înainte de a fi născut, blog-urile au fost o unelată a oamenilor pentru a-și exprima opiniile și, în general, gândurile. Trecând la prezent, blog-urile alcătuiesc o considerabilă parte a Internetului, iar dacă în trecut acestea erau doar personale sau cu scop educativ, acum există nenumărate ramuri ale conceptului standard, printre care blog-uri:</p>
+<ul>
+<li>corporatiste, fiindcă departamentul de IT și așa nu face nimic</li>
+<li>de modă; de ce nu ai vrea să afli care este culoarea anului?</li>
+<li>de călătorie, pentru a sta ore întregi pe site-uri de cazări, doar ca să-ți aminteștie că încă există <u><abbr title="sau „sindromul respirator acut 2019-nCoV”...">covrig-19</abbr></u></li>
+<li>de bucate, când nu ai idee ce să gătești sau, mai bine zis, când nu știi cum să gătești</li>
+</ul>
+<p>Am început această postare cu niște idei despre care nu toți ar aproba, dar eu cred că dacă tu, cititorul trecător, ai ajuns până aici (sau ai citit primul enunț, dar te-ai plictisit așa că te-ai uitat mai jos să vezi dacă chiar vorbesc despre ceva interesant) atunci consider această primă postare un succes. Răspunsul meu scurt pentru prima întrebare, „<strong>de ce?</strong>”, ar fi pentru o satisfacție personală; o dorință de a împărtăși niște idei, cum au făcut oamenii la începuturile Internetului.</p>
+<h2>Cum pot să fac și eu un astfel de site?</h2>
+<p>Dacă printr-un motiv extraordinar precum „nu am ce face cu timpul” sau „îmi place să împărtășesc idei (ne)interesante în siguranța <u><abbr title="World Wide Web">WWW</abbr></u>-ului” ai vrea să faci și tu un blog, uite <strong>cum</strong> am facut eu, după câteva ore de cercetare:</p>
+<p>Am ales un „generator” de blog-uri mic în dimensiune, dar, în același timp, ușor și rapid pentru a scrie și pentru a publica postări: <a href="https://github.com/cadars/portable-php">portable-php</a>. Spre deosebire de opțiuni mai populare, precum WordPress, Blogger etc., acest <u><abbr title="software creat pentru automatizarea cât mai deplină a gestiunii conținutului, în special a site-urilor web">CMS</abbr></u> este extrem de simplu! Dacă ignorăm programul principal pentru a rula <u><abbr title="un fișier text scris într-o anumită limbă de programare, aici PHP">script-ul de generare</abbr></u>, <u><abbr title="Php: Hypertext Preprocessor, un limbaj de programare de prin 1995">PHP</abbr></u>, atunci fișierul primcipal + toate dependențele &lt; 3500 linii de cod. Asta înseamnă de aproximativ 228 ori mai puțin decât WordPress<sup><a href="#" class="footnote-ref">1</a></sup>!</p>
+<blockquote>
+<p>Raportul de utilizare a diverselor sisteme de gestionare a conținutului (<u><abbr title="software creat pentru automatizarea cât mai deplină a gestiunii conținutului, în special a site-urilor web">CMS</abbr></u>):</p>
+</blockquote>
+<figure><img src="img/CMS-stats.png" alt="" title="Raportul de utilizare a diverselor sisteme de gestionare a conținutului (CMS)" width="479" height="682" loading="lazy" /><figcaption>Sursa: <a href="https://w3techs.com/technologies/overview/content_management">w3techs.com</a><br />
+Gri = procentajul de utilizare absolută<br />
+Verde = cota de piață</figcaption>
+</figure>
+<h3>„Dar Sabin, de ce nu ai folosit Gatsby sau Next.js?” - zise nimeni, niciodată</h3>
+<p>Ar fi mai multe motive, dar voi zice că am vrut să încerc ceva nou; să ies din zona de confort: <u><abbr title="Php: Hypertext Preprocessor, un limbaj de programare de prin 1995">PHP</abbr></u>. Deși nu folosesc <u><abbr title="Php: Hypertext Preprocessor, un limbaj de programare de prin 1995">PHP</abbr></u> ca pe un server web, folosesc fișiere <code>.php</code>, cu structură și sintaxă specifică. Prima impresie a fost că seamănă puțin cu <u><abbr title="un limbaj de programare">JavaScript</abbr></u> împreună cu <u><abbr title="o librărie pentru JavaScript">jQuery</abbr></u> și <u><abbr title="HyperText Markup Language, un fel de limbaj de programare pentru web">HTML</abbr></u>, dar după m-am uitat pe documentație și am observat că nu prea e așa.</p>
+<h4>Înapoi la tutorial-ul nu chiar tutorial</h4>
+<p>După ce <a href="https://github.com/cadars/portable-php/archive/refs/heads/main.zip">descarci</a> sau clonezi repository-ul cu:</p>
+<pre><code class="cod bash">git clone https://github.com/cadars/portable-php.git</code></pre>
+<p>poți face postări în directorul <code>content</code>. Acestea sunt împărțite pe fișiere de tip <u><abbr title="un limbaj care te ajută la formatarea textului și nu numai">Markdown</abbr></u>, un fișier = o postare. Acest lucru ajută autorul să își scrie și să își formateze lucrările mult mai ușor, adică dacă în <u><abbr title="HyperText Markup Language, un fel de limbaj de programare pentru web">HTML</abbr></u> ai scrie:</p>
+<pre><code class="cod html"> &lt;a href="https://example.com"&gt;Du-te pe un site&lt;/a&gt;</code></pre>
+<p>atunci în <u><abbr title="un limbaj care te ajută la formatarea textului și nu numai">Markdown</abbr></u> vei scrie doar:</p>
+<pre><code class="cod markdown">[Du-te pe un site](https://example.com)</code></pre>
+<p>Probabil că ai folosit <u><abbr title="un limbaj care te ajută la formatarea textului și nu numai">Markdown</abbr></u> fără să vrei, fie într-o postare pe un forum, pe o rețea de socializare (de exemplu Reddit) sau chiar pe GitHub.</p>
+<h4>Vorbind de GitHub</h4>
+<p>Acolo îmi țin majoritatea site-urilor publice, inclusiv acesta. Este destul de bun pentru găzduirea de website-uri statice<sup><a href="#" class="footnote-ref">2</a></sup>, ținând cont că este gratis. Nu doar lucruri ce țin de web pot fi puse, ci orice program, proiect etc. cât timp nu încalcă legea sau nu conține lecții la biologie etc.<sup><a href="#" class="footnote-ref">3</a></sup></p>
+<p>Bun, acum că am terminat reclama nesponsorizată, cum pui și tu ceva pe această platformă? Simplu, îți faci cont dacă nu ai deja, <a href="https://docs.github.com/en/get-started/quickstart/create-a-repo">creezi un nou repo</a>, <a href="https://guides.github.com/features/pages/">activezi <u><abbr title="GitHub">GH</abbr></u> Pages</a> <strong>fără a selecta nicio temă Jekyll</strong> și încarci fișierele de la proiectul modificat de mai sus. Site-ul tău va fi disponibil la <em>[utilizator].github.io/[nume_repo]</em>.</p>
+<h2>Pentru cine sunt blog-urile?</h2>
+<p>Pentru aproape toți oamenii. Chiar dacă te referi la cine poate face un blog sau dacă te referi la cine poate să citească un blog, răspunsul este oricine (fără dizabilități grave).</p>
+<p>Nu trebuie să te complici cum am făcut eu. Până la urmă, există și așa zisele „site builder-e”, la care doar muți niște elemente dintr-o parte în alta, deci dacă poți folosi un calculator cu Internet, poți să îți faci un site sau un blog. Despre audiență încă nu pot să zic nimic, dar un sfat bun este să nu pui reclame sau tracker-e de utilizatori. Nimănui nu îi place să fie urmărit, chiar dacă se află în „siguranța Internetului”.</p>
+<p>Se zice că dacă poți face ceva bine să o faci pentru bani, dar în cazul blog-urilor cred că este recomandat dacă se rămâne doar la plăcera de a scrie și de a împărtăși informații.</p>
+<div class="footnotes">
+<hr />
+<ol>
+<li>
+<p>presupunând că WordPress are aproximativ 800000 linii de cod, vezi <a href="https://youtu.be/PCKaP0ScrSc">acest video</a>&#160;<a href="#" class="footnote-backref">&#8617;</a></p>
+</li>
+<li>
+<p>un site static este un site fără elemente ce depind exclusiv de un server cu (de exemplu) o bază de date, utilizatori la care se arată pagini specifice sau formulare ce nu depind de un server „third-party” etc.&#160;<a href="#" class="footnote-backref">&#8617;</a></p>
+</li>
+<li>
+<p>acesta nu este un sfat legal, nu promit că daca pui lecții la biologie se va întâmpla ceva :)&#160;<a href="#" class="footnote-backref">&#8617;</a></p>
+</li>
+</ol>
+</div></section>            <section tabindex="0" role="document" aria-label="Home" id="home">
+                <nav>
+
+                    <ul class="toc">
+                        <li><a href="#blog-urile-de-ce-cum-pentru-cine-2021-10-23"><span> Blog-urile: De ce? Cum? Pentru cine?
+</span></a> <time datetime="2021-10-23">sâmbătă, 23 octombrie 2021</time></li>                    </ul>
+
+                </nav>
+            </section>
+          </div>
+    </main>
+    <footer>
+        <noscript>
+            <small>
+                <p>Am observat că ai dezactivat JavaScript, foarte bine! Acest blog necesită JS doar pentru evidențierea termenilor în blocurile de cod, ceea ce nu este neapărat necesar.<br><br></p>
+            </small>
+        </noscript>
+        <small>Ultima modificare a fost sâmbătă, 23 octombrie 2021</small>
+        <small><a href="#despre">Despre</a></small>
+        <!-- <div> -->
+        <!-- </div> -->
+    </footer>
+    <div class="copyleft">
+        <small><a href="https://github.com/sabinM1/blog/blob/master/LICENSE" target="_blank" rel="noopener noreferrer">🄯 Copyleft Maxim Sabin 2021</a></small>
+    </div>
+    <!--  Generat de către portable-php
+      Saturday 23rd of October 2021 03:54:06 PM      într-un timp de: 0.0066878795623779 secunde -->
+</body>
+
+</html>
