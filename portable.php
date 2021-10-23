@@ -76,7 +76,7 @@ foreach ($files as $file) {
     <meta property="og:description" content="<?php echo $site_desc; ?>">
     <!-- other -->
     <meta name="twitter:card" content="summary">
-    <script src="/dependencies/microlight.js"></script>
+    <script src="./dependencies/microlight.js"></script>
     <style>
         <?php echo file_get_contents($site_style);?>
     </style>
