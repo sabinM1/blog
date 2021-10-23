@@ -170,16 +170,8 @@ a[href*="//"]:after, a[href^="mailto:"]:after {
 }
 
 /* form */
-input[type=text],
-input[type=password],
-input[type=email],
-input[type=search],
-input[type=number],
-input[type=file],
-input[type=tel],
-input[type=url],
-select,
-textarea {
+
+input[type=password], input[type=email], input[type=text], input[type=search], input[type=number], input[type=file], input[type=tel], input[type=url], select, textarea {
   height: 45px;
   width: 100%;
   margin-bottom: 16px;
@@ -190,31 +182,20 @@ textarea {
   border-radius: 2px;
   transition: all 0.2s ease;
 }
-input[type=text]:hover,
-input[type=password]:hover,
-input[type=email]:hover,
-input[type=search]:hover,
-input[type=number]:hover,
-input[type=file]:hover,
-input[type=tel]:hover,
-input[type=url]:hover,
-select:hover,
-textarea:hover {
+
+/* form hover */
+
+input[type=password]:hover, input[type=email]:hover, input[type=text]:hover, input[type=search]:hover, input[type=number]:hover, input[type=file]:hover, input[type=tel]:hover, input[type=url]:hover, select:hover, textarea:hover {
   border-color: #111;
 }
-input[type=text]:focus,
-input[type=password]:focus,
-input[type=email]:focus,
-input[type=search]:focus,
-input[type=number]:focus,
-input[type=file]:focus,
-input[type=tel]:focus,
-input[type=url]:focus,
-select:focus,
-textarea:focus {
+
+/* form focus */
+
+input[type=password]:focus, input[type=email]:focus, input[type=text]:focus, input[type=search]:focus, input[type=number]:focus, input[type=file]:focus, input[type=tel]:focus, input[type=url]:focus, select:focus, textarea:focus {
   outline: none;
   border-color: #0062ff;
 }
+
 textarea {
   min-height: 70px;
 }
@@ -242,12 +223,12 @@ button:hover,
 button:focus,
 .button:focus,
 [type=submit]:focus {
-  opacity: 0.9;
+  opacity: 0.7;
 }
 button:active,
 .button:active,
 [type=submit]:active {
-  opacity: 0.7;
+  opacity: 0.5;
 }
 button[disabled],
 .button[disabled],
