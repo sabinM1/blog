@@ -3,9 +3,9 @@
 Cum poți face și tu un astfel de site? Simplu:
 
 1. Postările sunt scrise în directorul `content`
-2. După ce îți instalezi PHP rulezi `php portable.php > index.html`
+2. După ce îți instalezi PHP (eu am testat pe PHP 8) rulezi `php portable.php > index.html`
 3. Site-ul poate fi accesat prin `index.html`
-4. (optional) Poți compresa puțin fișierul HTML și cel CSS cu `minify index.html` și `minify styles.css`. Eu le am compresate, dar păstrez o copie necompresată a acestora în directorul `uncompressed`.
+4. (optional) Poți compresa puțin fișierul HTML și cel CSS cu `minify index.html` și, respectiv, `minify styles.css`. Eu le am compresate, dar păstrez o copie necompresată a acestora în directorul `uncompressed`.
 
 <details>
 <summary>Proiectul include mai multe module pentru PHP</summary>
