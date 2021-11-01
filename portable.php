@@ -76,7 +76,6 @@ foreach ($files as $file) {
     <meta property="og:description" content="<?php echo $site_desc; ?>">
     <!-- other -->
     <meta name="twitter:card" content="summary">
-    <script src="./dependencies/microlight.js"></script>
     <style>
         <?php echo file_get_contents($site_style);?>
     </style>
@@ -119,8 +118,6 @@ foreach ($files as $file) {
         </noscript>
         <small>Ultima modificare a fost <?php echo strftime("%A, %e %B %Y"); ?></small>
         <small><a href="#despre">Despre</a></small>
-        <!-- <div> -->
-        <!-- </div> -->
     </footer>
     <div class="copyleft">
         <small><a href="https://github.com/sabinM1/blog/blob/master/LICENSE" target="_blank" rel="noopener noreferrer">🄯 Copyleft Maxim Sabin <?php echo date("Y");?></a></small>
@@ -129,5 +126,6 @@ foreach ($files as $file) {
       <?php echo date("l jS \of F Y h:i:s A"); ?>
       într-un timp de: <?php echo $executionTime = microtime(true) - $_SERVER["REQUEST_TIME_FLOAT"]; ?> secunde -->
 </body>
-
+<!-- Punem JS la sfârșit pentru a se încărca pagina mai repede -->
+<script src="./dependencies/microlight.js"></script>
 </html>

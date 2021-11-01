@@ -15,8 +15,8 @@
     --text-color: #eeeeea;
     --text-color-light: #acacaa;
     --text-color-pale: #000;
-    --back-color: #1c1c1c; /*#1c1c1a*/
-    --link-color: #ffe178/*#ffe178*/; /*gold*/
+    --back-color: #1c1c1c;
+    --link-color: #ffe178;
   }
 }
 
@@ -29,10 +29,6 @@ body {
   margin:0 auto;
   min-height: 100vh;
   box-sizing: border-box;
-}
-
-html, body {
-  height = 100%;
 }
 
 /* Show & hide sections */
@@ -127,7 +123,7 @@ ul.toc li a:after {
   letter-spacing: 0em;
   width: 100%;
   font-size: 0.45em;
-  position: absolute;/* absolute */
+  position: absolute;
   bottom: .4em;
   white-space: nowrap;
   content:
@@ -338,7 +334,7 @@ figcaption a {
 }
 
 figcaption, small, .footnotes {
-  font-size: .865em; /*865*/
+  font-size: .865em;
 }
 
 /* Other elements */
@@ -389,7 +385,7 @@ kbd {
 pre {
   overflow: auto;
   padding: 0.65em .85em .6em;
-  background: rgb(23,24,15, 0.3)/*rgba(0,0,0,.025)*/;
+  background: rgb(23,24,15, 0.3);
   border-radius: 4px;
   margin: 1em 0;
 }
@@ -399,8 +395,8 @@ pre code {
   display:block;
   overflow-wrap: normal;
   white-space: pre;
-  background-color: var(--text-color-pale); /*#17180F rgb(23,24,15, 0.4)*/
-  color: var(--link-color); /* FFE178 */
+  background-color: var(--text-color-pale);
+  color: var(--link-color);
 }
 
 pre code:after {
