@@ -127,5 +127,5 @@ foreach ($files as $file) {
       într-un timp de: <?php echo $executionTime = microtime(true) - $_SERVER["REQUEST_TIME_FLOAT"]; ?> secunde -->
 </body>
 <!-- Punem JS la sfârșit pentru a se încărca pagina mai repede -->
-<script src="./dependencies/microlight.js"></script>
+<script async src="./dependencies/microlight.js"></script>
 </html>
