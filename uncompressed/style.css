@@ -260,8 +260,12 @@ section h1 {
   font-size: 1.6em;
 }
 
-h1, h2, h3, h4, strong, b, dt {
+h1, h2, h3, h4, b, dt {
   font-size: 1.2em;
+  font-weight: bold;
+}
+
+strong {
   font-weight: bold;
 }
 

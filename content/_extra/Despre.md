@@ -22,5 +22,5 @@ Am mai multe proiecte [aici](https://github.com/sabinM1)!
 ---
 
 ## Contact:
- - Prin email: sa[](https)bin<image src="./img/la.png" width="16" height="16"/>disroot[](https).[](https)org <!-- pentru a nu primi spam -->
+ - Prin email: sa[](https)bin<img src="./img/la.png" style="all:initial;">disroot[](https).[](https)org <!-- pentru a nu primi spam -->
  - Cu următorul formular:
