@@ -1,0 +1,4 @@
+User-agent: *
+Allow: *
+Disallow:
+Sitemap: https://sabinm1.github.io/blog/etc/sitemap.xml
