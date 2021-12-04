@@ -10,6 +10,7 @@ $site_title = 'Blog-ul lui Sabin';
 $site_desc = 'Blog în care scriu despre ce vreau';
 $site_style = 'style.css';
 $site_icon = 'img/icon.png';
+$site_url = 'https://sabinm1.github.io/blog';
 
 include('dependencies/Parsedown.php');
 include('dependencies/ParsedownExtra.php');
@@ -69,11 +70,15 @@ foreach ($files as $file) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title><?php echo $site_title; ?></title>
+    <meta name="title" content="<?php echo $site_title; ?>">
     <meta name="description" content="<?php echo $site_desc; ?>">
     <link rel="icon" href="data:image/png;base64,<?php echo base64_encode(file_get_contents($site_icon)); ?>">
     <!-- og tags -->
     <meta property="og:title" content="<?php echo $site_title; ?>">
     <meta property="og:description" content="<?php echo $site_desc; ?>">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="<?php echo $site_url; ?>">
+    <meta property="og:image" content="<?php echo $site_icon; ?>">
     <!-- other -->
     <meta name="twitter:card" content="summary">
     <style>
