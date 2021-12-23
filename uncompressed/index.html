@@ -33,7 +33,8 @@
             <section tabindex="0"> <!-- id="acasa" -->
                 <nav>
                     <ul class="toc">
-                        <li><a href="#c-t-de-aleatoriu-este-un-lucru-2021-11-01"><span> Cât de aleatoriu este un lucru?
+                        <li><a href="#log4shell-cel-mai-devastator-cadou-de-cr-ciun-2021-12-23"><span> Log4Shell: cel mai devastator cadou de Crăciun
+</span></a> <time datetime="2021-12-23">joi, 23 decembrie 2021</time></li><li><a href="#c-t-de-aleatoriu-este-un-lucru-2021-11-01"><span> Cât de aleatoriu este un lucru?
 </span></a> <time datetime="2021-11-01">luni,  1 noiembrie 2021</time></li><li><a href="#blog-urile-de-ce-cum-pentru-cine-2021-10-23"><span> Blog-urile: De ce? Cum? Pentru cine?
 </span></a> <time datetime="2021-10-23">sâmbătă, 23 octombrie 2021</time></li>                    </ul>
                 </nav>
@@ -64,7 +65,49 @@
 <ul>
 <li>Prin email: sa<a href="https"></a>bin<img alt="arond" src="./img/la.png" style="all:initial;">disroot<a href="https"></a>.<a href="https"></a>org <!-- pentru a nu primi spam --></li>
 <li>Cu următorul formular:</li>
-</ul> <form method="POST" action="https://www.formrocket.me/api/forms/46656298/blog/51662581323500320/post/showSuccessMessageOnDone"><p><input type="text" name="text" placeholder="Nume" aria-required="true" required style="height: 45px; width: 100%; margin-bottom: 16px; padding: 16px; font-size: 16px; background: #f5f5f5; border: 1px solid #a7a7a7; border-radius: 2px; transition: all 0.2s ease;"></p><p><input type="email" name="email" placeholder="Email" aria-required="true" required></p> <p><textarea name="mesaj" rows="4" placeholder="Propunerea/Întrebarea/Comentariul tău aici" aria-required="true" required></textarea></p><p><input type="submit" value="Trimite"></p></form></section>            <section tabindex="0" role="document" aria-label=" Cât de aleatoriu este un lucru?
+</ul> <form method="POST" action="https://www.formrocket.me/api/forms/46656298/blog/51662581323500320/post/showSuccessMessageOnDone"><p><input type="text" name="text" placeholder="Nume" aria-required="true" required style="height: 45px; width: 100%; margin-bottom: 16px; padding: 16px; font-size: 16px; background: #f5f5f5; border: 1px solid #a7a7a7; border-radius: 2px; transition: all 0.2s ease;"></p><p><input type="email" name="email" placeholder="Email" aria-required="true" required></p> <p><textarea name="mesaj" rows="4" placeholder="Propunerea/Întrebarea/Comentariul tău aici" aria-required="true" required></textarea></p><p><input type="submit" value="Trimite"></p></form></section>            <section tabindex="0" role="document" aria-label=" Log4Shell: cel mai devastator cadou de Crăciun
+" id="log4shell-cel-mai-devastator-cadou-de-cr-ciun-2021-12-23"><h1>Log4Shell: cel mai devastator cadou de Crăciun</h1>
+<h6><small>Cuvintele subliniate au explicații, țineți mouse-ul pe cuvânt pentru a vedea acestea.</small></h6>
+<figure><img src="img/log4shell.png" alt="imagine" title="Log4Shell" loading="lazy" /><figcaption>Sursă: <a href="https://www.lunasec.io/docs/blog/log4j-zero-day-mitigation-guide/">lunasec.io</a></figcaption>
+</figure>
+<h2>Trăiesc sub o rocă, ce este asta?</h2>
+<p>Log4j este o librarie folosită pentru <u><abbr title="salvarea anumitor informații (despre sistem sau alte aplicații), de obicei în unul sau mai multe fișiere jurnal (.log)">logging</abbr></u> în aplicațiile bazate pe Java.</p>
+<p>S-a găsit o vulnerabilitate în Apache Log4j v2 (mai exact în versiunile <code>2.0-beta9</code> până la <code>2.14.1</code>) ce permite unui atacator să execute <u><abbr title="orice comandă sau cod pe o mașină țintă sau într-un proces țintă">cod arbitrar</abbr></u> pe mașina țintă dacă sistemul capturează o secvență definită de atacator (folosind <u><abbr title="Java Naming and Directory Interface™">JNDI</abbr></u> și <u><abbr title="Lightweight Directory Access Protocol">LDAP</abbr></u>). Comenzile atacatorului sunt rulate cu aceleași permisiuni ca și aplicația Java ce a pornit Log4j.</p>
+<p>Această vulnerabilitate a fost supranumită Log4Shell, de la Log4j și Shell, o interfață către sistemul Unix.</p>
+<h2>Cine este afectat?</h2>
+<p>Aproape toate aplicațiile au un mod de <u><abbr title="salvarea anumitor informații (despre sistem sau alte aplicații), de obicei în unul sau mai multe fișiere jurnal (.log)">logging</abbr></u>, fie pentru a ajuta în dezvoltarea aplicației, pentru securite sau orice altceva. Log4j este o librărie des folosită în aplicațiile Java pentru acest lucru și Java este folosit mult în companiile mari... cred că vezi unde mă duc.</p>
+<p>Spune numele unei companii mari. Google? <a href="https://cloud.google.com/log4j2-security-advisory">Au fost afectați</a>. Microsoft? <a href="https://msrc-blog.microsoft.com/2021/12/11/microsofts-response-to-cve-2021-44228-apache-log4j2/">Și ei au făcut un articol</a>. IBM? <a href="https://www.ibm.com/blogs/psirt/an-update-on-the-apache-log4j-cve-2021-44228-vulnerability/">Da, articol actualizat chiar ieri (22 dec.)</a>. NVIDIA? <a href="https://nvidia.custhelp.com/app/answers/detail/a_id/5294">Și la ei este la fel</a>.</p>
+<p>Să nu mai zic de companiile specifice networking, acces la Internet etc.: <a href="https://www.akamai.com/blog/news/CVE-2021-44228-Zero-Day-Vulnerability">Akamai</a>, <a href="https://blog.cloudflare.com/cve-2021-44228-log4j-rce-0-day-mitigation/">Cloudflare</a>, <a href="https://support.citrix.com/article/CTX335705">Citrix</a>, <a href="https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-apache-log4j-qRuKNEbd">Cisco</a>, <a href="https://www.oracle.com/security-alerts/alert-cve-2021-44228.html">Oracle</a>, mai toți au fost afectați sau, cel puțin, au făcut un articol. O listă bună pentru a înțelege acest lucru este <a href="https://gist.github.com/SwitHak/b66db3a06c2955a9cb71a8718970c592">„CheatSheet”-ul Log4Shell</a>.</p>
+<h2>Liniștea dinaintea furtunii</h2>
+<figure><img src="img/608.png" alt="imagine" title="Comentariu la pull request-ul #608 la Log4j pe GitHub" loading="lazy" /><figcaption>Sursă: <a href="https://github.com/apache/logging-log4j2/pull/608#issuecomment-989762094">github.com</a></figcaption>
+</figure>
+<p>Prima idee către public a fost dată de <abbr title="Pull Request">PR</abbr>-ul unui membru Apache pe GitHub, <a href="https://github.com/apache/logging-log4j2/pull/608">„Restrict <abbr title="Lightweight Directory Access Protocol">LDAP</abbr> access via <abbr title="Java Naming and Directory Interface™">JNDI</abbr>”</a>. La început părea ca și un <abbr title="Pull Request">PR</abbr> normal, dar este posibil ca un lucru minor să fi alertat unele persoane: fișierul <code>JndiExploit.java</code>. Dacă numele nu conținea <em>exploit</em> și <em>jndi</em>, era posibil ca exploit-ul să se manifesteze mai târziu. De fapt, vulnerabilitatea a fost raportată către Apache cu o jumătate de lună înainte de a fi adusă publicului, deci și acest lucru putea încetini haosul. LunaSec a publicat <a href="https://www.lunasec.io/docs/blog/how-to-mitigate-open-source/">un articol bun</a> despre cum să remediați vulnerabilitățile găsite într-un proiect de tip Open Source.</p>
+<p>Primele implementări ale exploit-ului au fost făcute în Minecraft. Da, cel mai cumpărat joc, cu peste 238 milioane de vânzări, deținut de către Microsoft prin Mojang Studios. Poți vedea niște demonstrații inofensive în următoarele videoclipuri de pe YouTube: <a href="https://www.youtube.com/watch?v=gMK8c5WYO4Y">„Minecraft Log4J Exploit In Action”</a>, <a href="https://www.youtube.com/watch?v=BhEZieTl0TI">„I Hacked A Computer Through Minecraft... (Log4J Exploit)”</a>.</p>
+<h3>Ce a fost găsit până acum</h3>
+<p>Prima vulnerabilitate, despre care am scris până acum, a fost înregistrată în sistemul <u><abbr title="Common Vulnerabilities and Exposures">CVE</abbr></u> al corporației „MITRE”. Pe lângă aceasta au mai fost descoperite încă două.</p>
+<p>Log4j a avut următoarele ID-uri <abbr title="Common Vulnerabilities and Exposures">CVE</abbr>:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-44228"><abbr title="Common Vulnerabilities and Exposures">CVE</abbr>-2021-44228</a> - cu un grad de severitate „Critical”, 10, cel mai grav</li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-45046"><abbr title="Common Vulnerabilities and Exposures">CVE</abbr>-2021-45046</a> - primul fix, ce nici el nu stă bine, cu o severitate „Critical” și un scor de 9/10</li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-45105"><abbr title="Common Vulnerabilities and Exposures">CVE</abbr>-2021-45105</a> - severitate „High” cu un scor de 7.5/10, publicat pe 18.12.2021; sperăm să fie ultima vulnerabilitate</li>
+</ul>
+<h2>Remedierea vulnerabilității</h2>
+<p>Aici nu o să fac pe deșteptul și vă voi da un link la <a href="https://www.lunasec.io/docs/blog/log4j-zero-day-mitigation-guide/">ghidul de la LunaSec</a>. Acolo găsești sfaturi bune și resurse pentru scanarea unui sistem. De exemplu poți scana un sistem pentru a găsi dacă are o versiune veche de Log4j folosind <a href="https://github.com/fullhunt/log4j-scan">log4j-scan</a>.</p>
+<p><a href="https://www.akamai.com/blog/news/CVE-2021-44228-Zero-Day-Vulnerability">Akamai a publicat un articol</a> ce include o comandă simplă (ce trebuie rulată ca root sau cu <code>sudo</code>) pentru a vedea dacă au fost înregistrate încercări de atacare pe un sistem conectat la Internet:</p>
+<pre><code class="cod bash">egrep -i -r '\$\{jndi:(ldap[s]?|rmi|dns)://' /var/log</code></pre>
+<p>Cel mai bun sfat, în general, ar fi să îți actualizezi aplicațiile, fie de server, fie de desktop sau de telefon.</p>
+<h3>Ce pot face pentru a rămâne protejat în viitor?</h3>
+<p>Te poți uita în <a href="https://github.com/advisories">Baza de date de consiliere GitHub</a> pentru mai toate vulnerabilitățile, <a href="https://msrc.microsoft.com/update-guide/vulnerability">Microsoft Security Response Center</a> pentru cele specifice Microsoft. De asemenea, site-ul <a href="https://www.cvedetails.com/">cvedetails.com</a> are niște statistici interesante.</p>
+<h2>Surse și articole</h2>
+<ul>
+<li><a href="https://access.redhat.com/security/vulnerabilities/RHSB-2021-009">access.redhat.com</a></li>
+<li><a href="https://www.techtarget.com/searchsecurity/news/252510818/Critical-Apache-Log4j-2-bug-under-attack-mitigate-now">techtarget.com</a></li>
+<li><a href="https://nvidia.custhelp.com/app/answers/detail/a_id/5294">nvidia.custhelp.com</a></li>
+<li><a href="https://www.ncsc.gov.uk/information/log4j-vulnerability-what-everyone-needs-to-know">ncsc.gov.uk</a></li>
+<li><a href="https://logging.apache.org/log4j/2.x/index.html"><abbr title="salvarea anumitor informații (despre sistem sau alte aplicații), de obicei în unul sau mai multe fișiere jurnal (.log)">logging</abbr>.apache.org</a></li>
+<li><a href="https://www.akamai.com/blog/news/CVE-2021-44228-Zero-Day-Vulnerability">akamai.com</a></li>
+<li><a href="https://github.com/apache/logging-log4j2/pull/608">github.com/apache</a></li>
+</ul></section><section tabindex="0" role="document" aria-label=" Cât de aleatoriu este un lucru?
 " id="c-t-de-aleatoriu-este-un-lucru-2021-11-01"><h1>Cât de aleatoriu este un lucru?</h1>
 <h6><small>Cuvintele subliniate au explicații, țineți mouse-ul pe cuvânt pentru a vedea acestea.</small></h6>
 <h2>Nu se poate afla. Nimic nu este cu adevărat aleatoriu. Sfârșitul articolului.</h2>
@@ -183,7 +226,8 @@ Verde = cota de piață</figcaption>
                 <nav>
 
                     <ul class="toc">
-                        <li><a href="#c-t-de-aleatoriu-este-un-lucru-2021-11-01"><span> Cât de aleatoriu este un lucru?
+                        <li><a href="#log4shell-cel-mai-devastator-cadou-de-cr-ciun-2021-12-23"><span> Log4Shell: cel mai devastator cadou de Crăciun
+</span></a> <time datetime="2021-12-23">joi, 23 decembrie 2021</time></li><li><a href="#c-t-de-aleatoriu-este-un-lucru-2021-11-01"><span> Cât de aleatoriu este un lucru?
 </span></a> <time datetime="2021-11-01">luni,  1 noiembrie 2021</time></li><li><a href="#blog-urile-de-ce-cum-pentru-cine-2021-10-23"><span> Blog-urile: De ce? Cum? Pentru cine?
 </span></a> <time datetime="2021-10-23">sâmbătă, 23 octombrie 2021</time></li>                    </ul>
 
@@ -197,14 +241,14 @@ Verde = cota de piață</figcaption>
                 <p>Am observat că ai dezactivat JavaScript, foarte bine! Acest blog necesită JS doar pentru evidențierea termenilor în blocurile de cod, ceea ce nu este neapărat necesar.<br><br></p>
             </small>
         </noscript>
-        <small>Ultima modificare a fost sâmbătă,  4 decembrie 2021</small>
+        <small>Ultima modificare a fost joi, 23 decembrie 2021</small>
         <small><a href="#despre">Despre</a></small>
     </footer>
     <div class="copyleft">
         <small><a href="https://github.com/sabinM1/blog/blob/master/LICENSE" target="_blank" rel="noopener noreferrer">🄯 Copyleft Maxim Sabin 2021</a></small>
     </div>
     <!--  Generat de către portable-php
-      Saturday 4th of December 2021 11:59:42 AM      într-un timp de: 0.0079481601715088 secunde -->
+      Thursday 23rd of December 2021 06:46:55 PM      într-un timp de: 0.010910987854004 secunde -->
 </body>
 <!-- Punem JS la sfârșit pentru a se încărca pagina mai repede -->
 <script async src="./dependencies/microlight.js"></script>
