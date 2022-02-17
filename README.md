@@ -16,6 +16,6 @@ Cum poți face și tu un astfel de site? Simplu:
 
 </details>
 
-### Acest proiect are licență GPL-3.0
+### Acest proiect are licență CC BY-NC 4.0
 
 Pentru mai multe informații despre licență, consultați fișierul "LICENSE" sau [gnu.org](https://www.gnu.org/licenses/gpl-3.0.html).
