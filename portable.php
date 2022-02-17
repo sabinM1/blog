@@ -124,8 +124,8 @@ foreach ($files as $file) {
         <small>Ultima modificare a fost <?php echo strftime("%A, %e %B %Y"); ?></small>
         <small><a href="#despre">Despre</a></small>
     </footer>
-    <div class="copyleft">
-        <small><a href="https://github.com/sabinM1/blog/blob/master/LICENSE" target="_blank" rel="noopener noreferrer">🄯 Copyleft Maxim Sabin <?php echo date("Y");?></a></small>
+    <div class="licenta">
+        <small><a href="https://github.com/sabinM1/blog/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><copy> Maxim Sabin <?php echo date("Y");?></a></small>
     </div>
     <!--  Generat de către portable-php
       <?php echo date("l jS \of F Y h:i:s A"); ?>

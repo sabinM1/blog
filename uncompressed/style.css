@@ -157,7 +157,7 @@ a[href*="//"]:after, a[href^="mailto:"]:after {
   content: "\2197"; /* top right arrow: ↗ */
 }
 
-.copyleft {
+.licenta {
  position: absolute;
  text-align: center;
  bottom: 0;
